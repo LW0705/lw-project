@@ -7,4 +7,6 @@ package com.service;
  * @version: 1.0
  */
 public interface Test {
+
+    Integer test();
 }
