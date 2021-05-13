@@ -1,0 +1,20 @@
+spring:
+    datasource:
+        # pom文件中添加的mysql依赖的mysql-connector-java版本在6.0以下:
+        # 使用com.mysql.jdbc.Driver
+        # 版本在6.0以上（包括6.0）使用com.mysql.cj.jdbc.Driver
+        driver-class-name: com.mysql.jdbc.Driver
+        # useUnicode                是否使用Unicode字符集
+        # characterEncoding         指定字符编码
+        # autoReconnect             数据库连接异常中断时，是否自动重新连接。
+        # failOverReadOnly          自动重连成功后，连接是否设置为只读
+        # allowMultiQueries=true    1.可以在sql语句后携带分号，实现多语句执行;    2.可以执行批处理，同时发出多个sql语句
+        # useSSL                    mysql在高版本需要指明是否进行了SSL连接
+        # serverTimezone=GMT%2B8    北京时间东8区
+        url: jdbc:mysql://localhost:3306/lw-project?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&failOverReadOnly=false&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+        username: root
+        password: 1234
+
+
+
+
