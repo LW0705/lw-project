@@ -1,5 +1,7 @@
 package com.common.entity;
 
+import java.util.Date;
+
 /**
  * @Auther: 鼠宣伟
  * @Date: 2021/5/13
@@ -16,12 +18,12 @@ public class BaseDO {
     /**
      * 创建时间
      */
-    private String gmtCreate;
+    private Date gmtCreate;
 
     /**
      * 修改时间
      */
-    private String gmtModified;
+    private Date gmtModified;
 
     /**
      * 行版本(0:正常，-1:删除)
@@ -61,19 +63,19 @@ public class BaseDO {
         this.id = id;
     }
 
-    public String getGmtCreate() {
+    public Date getGmtCreate() {
         return gmtCreate;
     }
 
-    public void setGmtCreate(String gmtCreate) {
+    public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
     }
 
-    public String getGmtModified() {
+    public Date getGmtModified() {
         return gmtModified;
     }
 
-    public void setGmtModified(String gmtModified) {
+    public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
     }
 

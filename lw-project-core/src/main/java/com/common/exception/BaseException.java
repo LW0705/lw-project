@@ -57,4 +57,12 @@ public class BaseException extends RuntimeException{
         this(errEnum.getCode(),String.format(errEnum.getMsg(),args));
     }
 
+    public String getCode(){
+        return code;
+    }
+
+    public String getMsg(){
+        return msg;
+    }
+
 }

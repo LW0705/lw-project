@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lw.dao.ProductAssembleVersionDAO">
+    
+    <resultMap id="BaseResultMap" type="com.lw.entity.ProductAssembleVersionDO">
+        <id column="id" property="id" />
+        <result column="data_version" property="dataVersion"/>
+        <result column="data_type" property="dataType"/>
+        <result column="assemble_status" property="assembleStatus"/>
+        <result column="product_type" property="productType"/>
+        <result column="product_guid" property="productGuid"/>
+        <result column="product_bar_code" property="productBarCode"/>
+        <result column="financial_code" property="financialCode"/>
+        <result column="creator" property="creator"/>
+        <result column="operator" property="operator"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+        <result column="row_status" property="rowStatus"/>
+        <result column="row_version" property="rowVersion"/>
+        <result column="biz_type" property="bizType"/>
+        <result column="ext_att" property="extAtt"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into system_product_assemble_version(
+            data_version,data_type,assemble_status,product_type,product_guid,creator,operator,gmt_create,gmt_modified,row_status,row_version,biz_type,ext_att
+        ) values (
+            #{dataVersion},#{dataType},#{assembleStatus},#{productType},#{productGuid},#{creator},#{operator},now(),now(),0,0,#{bizType},#{extAtt}
+        )
+    </insert>
+
+    <select id="getMaxDataVersion" resultType="java.lang.String">
+        select data_version from system_product_assemble_version
+        where row_status=0 and product_guid=#{productGuid}
+        order by gmt_create desc limit 1;
+    </select>
+
+</mapper>

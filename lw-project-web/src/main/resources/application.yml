@@ -3,7 +3,7 @@ spring:
         # pom文件中添加的mysql依赖的mysql-connector-java版本在6.0以下:
         # 使用com.mysql.jdbc.Driver
         # 版本在6.0以上（包括6.0）使用com.mysql.cj.jdbc.Driver
-        driver-class-name: com.mysql.jdbc.Driver
+        driver-class-name: com.mysql.cj.jdbc.Driver
         # useUnicode                是否使用Unicode字符集
         # characterEncoding         指定字符编码
         # autoReconnect             数据库连接异常中断时，是否自动重新连接。
@@ -18,3 +18,8 @@ spring:
 
 
 
+mybatis:
+    # mapper文件位置
+    mapper-locations: classpath:mybatis/lw/*.xml
+    # 配置文件位置
+    config-location: classpath:mybatis/mybatis-config.xml

@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @Auther: 鼠宣伟
@@ -19,6 +20,26 @@ public class BaseDTO implements Serializable {
      * 主键
      */
     private Long id;
+
+    /**
+     * 创建人
+     */
+    private String creator;
+
+    /**
+     * 操作人
+     */
+    private String operator;
+
+    /**
+     * 创建时间
+     */
+    private Date gmtCreate;
+
+    /**
+     * 修改时间
+     */
+    private Date gmtModified;
 
     /**
      * 业务类型
@@ -37,6 +58,38 @@ public class BaseDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCreator(){
+        return creator;
+    }
+
+    public void setCreator(String creator){
+        this.creator=creator;
+    }
+
+    public String getOperator(){
+        return operator;
+    }
+
+    public void setOperator(String operator){
+        this.operator=operator;
+    }
+
+    public Date getGmtCreate(){
+        return gmtCreate;
+    }
+
+    public void setGmtCreate(Date gmtCreate){
+        this.gmtCreate = gmtCreate;
+    }
+
+    public Date getGmtModified(){
+        return gmtModified;
+    }
+
+    public void setGmtModified(Date gmtModified){
+        this.gmtModified=gmtModified;
     }
 
     public Integer getBizType() {

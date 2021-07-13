@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lw.dao.CodeNumberDAO">
+
+    <!-- 根据名称获取编码 -->
+    <select id="getCodeByName" resultType="com.lw.entity.CodeNumberDO">
+        select
+          id,
+          prefix,
+          size,
+          code_number as codeNumber,
+          row_version as rowVersion
+        from system_code_number
+        where row_status=0
+          and code_type=#{codeType}
+          and #{fullName} like concat(classify_name,'%')
+    </select>
+
+    <update id="updateCodeByName">
+        update system_code_number
+        <set>
+            gmt_modified=now(),
+            code_number=#{codeNumber}
+        </set>
+        where row_status=0
+          and id=#{id}
+          and row_version=#{rowVersion}
+    </update>
+</mapper>

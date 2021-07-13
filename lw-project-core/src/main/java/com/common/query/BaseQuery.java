@@ -45,12 +45,22 @@ public class BaseQuery implements Serializable {
     //总记录条数
     private Integer totalRecord;
 
+    //主键
+    private Long id;
+
+    //创建人
+    private String creator;
+
+    //编辑人
+    private String operator;
+
     public String getColumn() {
         if (StringUtils.isBlank(column)) {
             return column;
         }
 
         Field[] fields = this.getClass().getDeclaredFields();
+        column=column.toUpperCase();
         //Stream.of():返回包含单个元素的顺序Stream
         //o->Stream.of(o.getName().split(""):将每个字段分割成单独的字符并封装成Stream流
         //Character.isUpperCase(char ch):判断字符是否是大写字母
@@ -78,7 +88,7 @@ public class BaseQuery implements Serializable {
             return sort;
         }
         sort = sort.toUpperCase();
-        if (!"ASC".equals(sort) && !"DESC".equals(sort)) {
+        if (!ASC.equals(sort) && !DESC.equals(sort)) {
             throw new BaseException(ErrEnum.PARAM_ERROR, "排序值必须是ASC或者DESC!");
         }
         return sort;
@@ -149,10 +159,27 @@ public class BaseQuery implements Serializable {
 
     /**
      * 跳过的条数
+     *
      * @return
      */
-    public Integer getOffset(){
-        return (getCurrentPage()-1)*getPageSize();
+    public Integer getOffset() {
+        return (getCurrentPage() - 1) * getPageSize();
+    }
+
+    public String getCreator(){
+        return creator;
+    }
+
+    public void setCreator(String creator){
+        this.creator=creator;
+    }
+
+    public String getOperator(){
+        return operator;
+    }
+
+    public void setOperator(String operator){
+        this.operator=operator;
     }
 
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lw.dao.ProductAssembleDAO">
+    
+    <resultMap id="BaseResultMap" type="com.lw.entity.ProductAssembleDO">
+        <id column="id" property="id" />
+        <result column="p_product_guid" property="pProductGuid"/>
+        <result column="s_product_guid" property="sProductGuid"/>
+        <result column="basic_num" property="basicNum"/>
+        <result column="assemble_type" property="assembleType"/>
+        <result column="product_type" property="productType"/>
+        <result column="creator" property="creator"/>
+        <result column="operator" property="operator"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+        <result column="row_status" property="rowStatus"/>
+        <result column="row_version" property="rowVersion"/>
+        <result column="biz_type" property="bizType"/>
+        <result column="ext_att" property="extAtt"/>
+    </resultMap>
+
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into system_product_assemble(
+            p_product_guid,s_product_guid,basic_num,assemble_type,product_type,creator,operator,gmt_create,gmt_modified,row_status,row_version,biz_type,ext_att
+        ) values(
+            #{pProductGuid},#{sProductGuid},#{basicNum},#{assembleType},#{productType},#{creator},#{operator},now(),now(),0,0,#{bizType},#{extAtt}
+        )
+    </insert>
+
+    <insert id="batchInsert" useGeneratedKeys="true" keyProperty="id">
+        insert into system_product_assemble(
+            p_product_guid,s_product_guid,basic_num,assemble_type,product_type,creator,operator,gmt_create,gmt_modified,row_status,row_version,biz_type,ext_att
+        ) value
+            <foreach collection="list" separator="," item="item">
+                (#{item.pProductGuid},#{item.sProductGuid},#{item.basicNum},#{item.assembleType},#{item.productType},#{item.creator},#{item.operator},now(),now(),0,0,#{item.bizType},#{item.extAtt})
+            </foreach>
+
+    </insert>
+</mapper>

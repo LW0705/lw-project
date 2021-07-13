@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lw.dao.ProductDAO">
+    
+    <resultMap id="BaseResultMap" type="com.lw.entity.ProductDO">
+        <id column="id" property="id" />
+        <result column="product_guid" property="productGuid"/>
+        <result column="product_bar_code" property="productBarCode"/>
+        <result column="financial_code" property="financialCode"/>
+        <result column="product_name" property="productName"/>
+        <result column="product_full_name" property="productFullName"/>
+        <result column="wms_product_name" property="wmsProductName"/>
+        <result column="query_pym_code" property="queryPymCode"/>
+        <result column="query_wbm_code" property="queryWbmCode"/>
+        <result column="product_property" property="productProperty"/>
+        <result column="financial_code_number" property="financialCodeNumber"/>
+        <result column="taste" property="taste"/>
+        <result column="classify_id" property="classifyId"/>
+        <result column="assemble_status" property="assembleStatus"/>
+        <result column="stock_status" property="stockStatus"/>
+        <result column="product_spec" property="productSpec"/>
+        <result column="net_weight" property="netWeight"/>
+        <result column="gross_weight" property="grossWeight"/>
+        <result column="product_volume" property="productVolume"/>
+        <result column="product_length" property="productLength"/>
+        <result column="product_width" property="productWidth"/>
+        <result column="product_height" property="productHeight"/>
+        <result column="full_box_volume" property="fullBoxVolume"/>
+        <result column="full_box_length" property="fullBoxLength"/>
+        <result column="full_box_width" property="fullBoxWidth"/>
+        <result column="full_box_height" property="fullBoxHeight"/>
+        <result column="full_box_weight" property="fullBoxWeight"/>
+        <result column="big_unit" property="bigUnit"/>
+        <result column="small_unit" property="smallUnit"/>
+        <result column="change_scale" property="changeScale"/>
+        <result column="sales_type" property="salesType"/>
+        <result column="quality_period" property="qualityPeriod"/>
+        <result column="min_quality_period" property="minQualityPeriod"/>
+        <result column="container_status" property="containerStatus"/>
+        <result column="outer_pack_status" property="outerPackStatus"/>
+        <result column="sales_price" property="salesPrice"/>
+        <result column="quota_price" property="quotaPrice"/>
+        <result column="tax_scale" property="taxScale"/>
+        <result column="tax_rate" property="taxRate"/>
+        <result column="product_source" property="productSource"/>
+        <result column="invoice_type" property="invoiceType"/>
+        <result column="invoice_code" property="invoiceCode"/>
+        <result column="inspect_upper" property="inspectUpper"/>
+        <result column="inspect_lower" property="inspectLower"/>
+        <result column="check_num" property="checkNum"/>
+        <result column="product_sku" property="productSku"/>
+        <result column="single_sku" property="singleSku"/>
+        <result column="flavour_sku" property="flavourSku"/>
+        <result column="product_mark" property="productMark"/>
+        <result column="new_sku" property="newSku"/>
+        <result column="account_type" property="accountType"/>
+        <result column="product_type" property="productType"/>
+        <result column="gift_type" property="giftType"/>
+        <result column="audit_source" property="auditSource"/>
+        <result column="audit_status" property="auditStatus"/>
+        <result column="apply_status" property="applyStatus"/>
+        <result column="stop_status" property="stopStatus"/>
+        <result column="sync_status" property="syncStatus"/>
+        <result column="data_version" property="dataVersion"/>
+        <result column="son_category_id" property="sonCategoryId"/>
+        <result column="parent_category_id" property="parentCategoryId"/>
+        <result column="category_full_code" property="categoryFullCode"/>
+        <result column="belong_company" property="belongCompany"/>
+        <result column="creator" property="creator"/>
+        <result column="operator" property="operator"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+        <result column="row_status" property="rowStatus"/>
+        <result column="row_version" property="rowVersion"/>
+        <result column="biz_type" property="bizType"/>
+        <result column="ext_att" property="extAtt"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        t1.id, t1.PRODUCT_GUID, t1.PRODUCT_NAME, t1.PRODUCT_FULL_NAME, t1.WMS_PRODUCT_NAME, t1.QUERY_PYM_CODE, t1.QUERY_WBM_CODE,
+        t1.PRODUCT_PROPERTY, t1.PRODUCT_BAR_CODE, t1.FINANCIAL_CODE,t1.financial_code_number,t1.account_type,t1.biz_type,
+        t1.TASTE, t1.CLASSIFY_ID, t2.CLASSIFY_NAME, t2.full_code, t2.full_name, t1.ASSEMBLE_STATUS,t1.stock_status, t1.PRODUCT_SPEC, t1.NET_WEIGHT,
+        t1.GROSS_WEIGHT, t1.PRODUCT_VOLUME, t1.FULL_BOX_VOLUME,t1.apply_status,
+        t1.FULL_BOX_WEIGHT, t1.BIG_UNIT, t1.SMALL_UNIT, t1.CHANGE_SCALE, t1.SALES_TYPE, t1.QUALITY_PERIOD, t1.MIN_QUALITY_PERIOD,
+        t1.SALES_PRICE, t1.QUOTA_PRICE, t1.TAX_SCALE,t1.TAX_RATE,t1.container_status,t1.outer_pack_status,
+        t1.INVOICE_TYPE, t1.INVOICE_CODE, t1.INSPECT_UPPER, t1.INSPECT_LOWER, t1.CHECK_NUM, t1.product_sku, t1.single_sku,
+        t1.flavour_sku, t1.new_sku, t1.product_type, t1.gift_type, t1.product_length,t1.product_width,t1.product_height,t1.full_box_length,t1.full_box_width,t1.full_box_height,
+        t1.STOP_STATUS, t1.GMT_CREATE, t1.GMT_MODIFIED,t1.CREATOR, t1.OPERATOR,t1.row_version,t1.product_mark, t1.DATA_VERSION,t1.PARENT_CATEGORY_ID,t1.SON_CATEGORY_ID,t1.CATEGORY_FULL_CODE,t1.BELONG_COMPANY
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into system_product(
+            product_guid,product_bar_code,financial_code,product_name,product_full_name,wms_product_name,
+            query_pym_code,query_wbm_code,product_property,financial_code_number,taste,classify_id,assemble_status,
+            stock_status,product_spec,net_weight,gross_weight,product_volume,product_length,product_width,product_height,
+            full_box_volume,full_box_length,full_box_width,full_box_height,full_box_weight,big_unit,small_unit,change_scale,
+            sales_type,quality_period,min_quality_period,container_status,outer_pack_status,sales_price,quota_price,tax_scale,
+            tax_rate,product_source,invoice_type,invoice_code,inspect_upper,inspect_lower,check_num,product_sku,single_sku,flavour_sku,
+            product_mark,new_sku,account_type,product_type,gift_type,audit_source,audit_status,apply_status,stop_status,sync_status,data_version,
+            son_category_id,parent_category_id,category_full_code,belong_company,creator,operator,gmt_create,gmt_modified,row_status,row_version,
+            biz_type,ext_att
+        ) values(
+            #{productGuid},#{productBarCode},#{financialCode},#{productName},#{productFullName},#{wmsProductName},
+            #{queryPymCode},#{queryWbmCode},#{productProperty},#{financialCodeNumber},#{taste},#{classifyId},#{assembleStatus},
+            #{stockStatus},#{productSpec},#{netWeight},#{grossWeight},#{productVolume},#{productLength},#{productWidth},#{productHeight},
+            #{fullBoxVolume},#{fullBoxLength},#{fullBoxWidth},#{fullBoxHeight},#{fullBoxWeight},#{bigUnit},#{smallUnit},#{changeScale},
+            #{salesType},#{qualityPeriod},#{minQualityPeriod},#{containerStatus},#{outerPackStatus},#{salesPrice},#{quotaPrice},#{taxScale},
+            #{taxRate},#{productSource},#{invoiceType},#{invoiceCode},#{inspectUpper},#{inspectLower},#{checkNum},#{productSku},#{singleSku},#{flavourSku},
+            #{productMark},#{newSku},#{accountType},#{productType},#{giftType},#{auditSource},#{auditStatus},#{applyStatus},#{stopStatus},#{syncStatus},#{dataVersion},
+            #{sonCategoryId},#{parentCategoryId},#{categoryFullCode},#{belongCompany},#{creator},#{operator},now(),now(),0,0,
+            #{bizType},#{extAtt}
+        )
+    </insert>
+    
+    <select id="checkExists" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from system_product t1
+        join system_classify t2 on t1.classify_id =t2.id
+        where t1.row_status=0 and t2.row_status=0 and
+        (t1.product_name=#{productName} or t1.product_bar_code=#{productBarCode})
+        limit 1;
+    </select>
+</mapper>
